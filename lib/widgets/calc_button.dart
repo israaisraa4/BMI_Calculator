@@ -1,16 +1,20 @@
 import 'package:bmi_calculator/helpers/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:bmi_calculator/screens/result.dart';
 
 class CalculateButton extends StatelessWidget {
   final String title;
-  const CalculateButton({super.key, required this.title});
+  final void Function()? onPress;
+  const CalculateButton({
+    super.key,
+    required this.title,
+    required this.onPress,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        Navigator.pushNamed(context, '/result');
-      },
+      onPressed: onPress,
       style: ElevatedButton.styleFrom(
         backgroundColor: secoundryColor,
 

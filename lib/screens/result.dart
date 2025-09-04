@@ -3,16 +3,16 @@ import 'package:bmi_calculator/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
+  final String resultClass;
   final double bmi;
-  final String result;
   final String advice;
 
   const ResultScreen({
-    super.key,
+    Key? key,
+    required this.resultClass,
     required this.bmi,
-    required this.result,
     required this.advice,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class ResultScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    result,
+                    resultClass,
                     style: TextStyle(
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class ResultScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    bmi.toString(),
+                    bmi.toStringAsFixed(2),
                     style: TextStyle(
                       fontSize: 60,
                       fontWeight: FontWeight.w900,
@@ -56,7 +56,9 @@ class ResultScreen extends StatelessWidget {
           ),
           CalculateButton(
             title: 'RE-calculate',
-        //   onPress: () => Navigator.pop(context),
+            onPress: () {
+              Navigator.pop(context);
+            },
           ),
         ],
       ),
